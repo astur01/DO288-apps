@@ -127,15 +127,11 @@ pipeline {
 
                 echo '### Creating a new app in Staging ###'
                 //TODO: Create a new app in stage using the books:stage image stream and expose the service
-                script {
-                   openshift.withCluster() {
-                     openshift.withProject(${STAGE_PROJECT}) {
+                sh '''
                         oc new-app --as-deployment-config --name ${APP_NAME} \
                            -i ${STAGE_PROJECT}/${APP_NAME}:stage
                         oc expose svc/${APP_NAME}
-                     }
-                   }
-                }
+                   '''      
             }
         }
 
