@@ -29,7 +29,7 @@ describe('Books App routes test', () => {
       });
   });
 
-  it('GET to /authors should return 200', (done) => {
+  it('GET to /authors should return ok 200', (done) => {
     chai.request(reqServer)
       .get('/authors')
       .end((err, res) => {
